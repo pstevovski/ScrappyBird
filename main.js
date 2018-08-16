@@ -26,6 +26,8 @@ flySound.src = "sounds/fly.mp3";
 let gravity = 1; // Force that pulls the bird down
 let gap = 100; // Gap between pipes
 let constant; // The sum of the top pipe height + gap.
+let score = 0;
+const displayScore = document.getElementById("score");
 
 // Bird position
 let birdX = 20;
@@ -40,13 +42,18 @@ pipe[0] = {
 
 // Bird jumps (fly)
 document.addEventListener("keydown", jump);
+document.addEventListener("touchstart", touchJump);
 function jump(e){
-    console.log(e.keyCode)
+    // Space key code is 32.
     if ( e.keyCode === 32) {
         birdY -= 30;
     }
 }
+function touchJump(){
+    birdY -=30;
+}
 
+displayScore.innerHTML = "Score: 0";
 function draw(){
     // Display the background
     ctx.drawImage(bg,0,0);
@@ -68,8 +75,21 @@ function draw(){
                 y: Math.floor(Math.random() * pipeTop.height) - pipeTop.height
             })
         }
-    }
 
+        // Increase score
+        if ( pipe[i].x == 10) {
+            score++;
+            displayScore.innerHTML = "Score: "+score;
+        }
+
+        // Detect collision with pipes and ground.
+        if( birdX + bird.width >= pipe[i].x && birdX <= pipe[i].x + pipeTop.width && (birdY <= pipe[i].y + pipeTop.height || birdY + bird.height >= pipe[i].y + constant) || birdY + bird.height >= cvs.height - ground.height ) {
+            location.reload();
+            console.log("crash");
+        }
+    }
+    // Draw the ground
+    ctx.drawImage(ground, 0, cvs.height - ground.height);
     // Draw the bird
     ctx.drawImage(bird, birdX, birdY);
     // Gravity affects the bird
