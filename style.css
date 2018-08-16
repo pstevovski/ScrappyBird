@@ -1,0 +1,107 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #20a9e9;
+    font-family: "Montserrat Black";
+}
+h1{
+    color: #333;
+    font-size: 35px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.menu{
+    margin: 0 auto;
+    width: 250px;
+    min-height: 100px;
+    text-align: center;
+}
+button{
+    width: 100px;
+    padding: 10px;
+    border: none;
+    border-radius: 1px;
+    color: #333;
+    background: #f2f2f2;
+    font-family: "Montserrat SemiBold";
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.2s ease;
+    outline: none;
+}
+#startGame{
+    margin: 30px 0 -10px 0;
+}
+#startGame:hover{
+    box-shadow: 3px 3px rgba(0,0,0,0.35)
+}
+.levels{
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+}
+#day, #night{
+    text-align: center;
+}
+#day:hover{
+    background-color: #FFEB3B;
+    box-shadow: 3px 3px rgba(0,0,0,0.35)
+}
+#night:hover{
+    background-color:#353b48;
+    color: #f2f2f2;
+    box-shadow: 3px 3px rgba(0,0,0,0.35)
+}
+.container{
+    display:none;
+    justify-content: center;
+    align-items: center;
+
+    width: 288px;
+    position: relative;
+    margin: 0 auto;
+}
+canvas{
+    margin-top: -70px;
+    box-shadow: 10px 10px rgba(0,0,0,0.25);
+}
+#score{
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: #333;
+}
+.gameOver{
+    display: none;
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    box-shadow: 5px 5px rgba(0,0,0,0.55);
+}
+.gameOver h2{
+    text-align: center;
+}
+.gameOver p {
+    text-align: left;
+}
+.gameOver button{
+    background-color: #333;
+    color: #f2f2f2;
+    width: 110px;
+    text-align: center;
+}
