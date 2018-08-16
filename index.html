@@ -10,9 +10,27 @@
 <body>
     <!-- Title -->
     <h1>ScrappyBird</h1>
-    <!-- Canvas -->
-    <canvas id="canvas" width="288" height="512"></canvas>
+    <div class="menu">
+        <button id="startGame">Start Game</button>
+        <div class="levels">
+            <button id="day">Day</button>
+            <button id="night">Night</button>
+        </div>
+    </div>
 
+    <div class="container">
+        <div id="score"></div>
+        <!-- Canvas -->
+        <canvas id="canvas" width="288" height="512"></canvas>
+    </div>
+
+    <!-- Game Over menu -->
+    <div class="gameOver">
+        <h2>GAME OVER !!</h2>
+        <p>Score: <span id="showScore"></span></p>
+        <p>Highscore: <span id="showHighscore"></span></p>
+        <button id="playAgain">Play Again ?</button>
+    </div>
 
 <!-- Script link -->
 <script src="main.js"></script>
