@@ -6,19 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scrappy Bird</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
 </head>
 <body>
     <!-- Title -->
     <h1>ScrappyBird</h1>
-    <div class="menu">
-        <button id="startGame">Start Game</button>
-        <div class="levels">
-            <button id="day">Day</button>
-            <button id="night">Night</button>
-        </div>
-    </div>
-
     <div class="container">
+        <!-- INFO HOW TO START -->
+        <div class="deviceInfo">
+            <div class="pc device">
+                Press spacebar to start !
+            </div>
+            <div class="mobile device">
+              Touch screen to start !
+            </div>
+        </div>
         <div id="score"></div>
         <!-- Canvas -->
         <canvas id="canvas" width="288" height="512"></canvas>
@@ -30,6 +32,11 @@
         <p>Score: <span id="showScore"></span></p>
         <p>Highscore: <span id="showHighscore"></span></p>
         <button id="playAgain">Play Again ?</button>
+        <button id="exit">Exit</button>
+        <!-- Github Link -->
+        <div class="link">
+            <a href="https://github.com/pecko95/ScrappyBird/" target="_blank"><img src="images/github.png" alt="GitHub" width="25px"></a>
+        </div>
     </div>
 
 <!-- Script link -->
