@@ -7,14 +7,40 @@ body{
     background-color: #0097e6;
     font-family: "Montserrat Black";
 }
+/* MATERIAL DESIGN ICONS CSS */
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;  /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+  
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+  
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+  
+	/* Support for IE. */
+	font-feature-settings: 'liga';
+}
 h1{
     color: #f2f2f2;
     font-size: 65px;
     margin-bottom: 5px;
-    margin-top: -15px;
+    margin-top: 0px;
     letter-spacing: 1px;
     text-align: center;
-    font-family: "Paytone One";
+    text-shadow: 5px 5px rgba(0,0,0,0.15);
+    font-family: "Montserrat Black";
 }
 .link{
     text-align: center;
@@ -161,13 +187,53 @@ canvas{
         transform: translate(-50%, -50%)scale(1);
     }
 }
-
+.credits_container{
+    display: none;
+}
 @media (min-width: 900px){
     .pc{
         display: block;
     }
     .mobile{
         display: none;
+    }
+    .credits_container{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 250px;
+        min-height: 100px;
+
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        flex-direction: column;
+    }
+    .credit_box{
+        display: none;
+        background-color: #eee;
+        padding: 10px;
+        font-family: "Montserrat Medium";
+        font-size: 14px;
+    }
+    .credit_box h2{
+        font-family: "Montserrat Black";
+    }
+    .credit_box a{
+        text-decoration: none;
+        color: #0097e6;
+    }
+    .showBox{
+        display: block;
+    }
+    .credits_container i {
+        font-size: 30px;
+        color: #f2f2f2;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+    .credits_container i:hover{
+        transform:scale(1.1)
     }
 }
 
