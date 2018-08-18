@@ -21,8 +21,8 @@ dieSound.src = "sounds/die.ogg";
 hitSound.src = "sounds/hit.ogg";
 
 // Global variables
-let gravity = 2; // Force that pulls the bird down
-let gap = 100; // Gap between the pipes
+let gravity = 2.3; // Force that pulls the bird down
+let gap = 90; // Gap between the pipes
 let constant; // The sum of the top pipe height + gap.
 let score = 0; // Starting score
 let checkGameStatusInterval = setInterval(checkGameStatus, 50);
@@ -87,8 +87,7 @@ window.onload = function init(){
 function jump(e){
     if ( playing == true && e.code === "Space"){
         checkGame = true;
-        // Space key is 32.
-        birdY -= 50;
+        birdY -= 40;
         d = "UP";
         flySound.play();
     }
@@ -99,7 +98,7 @@ function jumpStatus(){
 }
 // Bird jumps on screen touch.
 function touchJump(){
-    birdY -= 50;
+    birdY -= 40;
     d = "UP";
     flySound.play();
     checkGame = true;
@@ -144,7 +143,7 @@ function draw(){
         pipe[i].x --;
 
         // If the pipes pass a certain distance, push new pipes into the array
-        if ( pipe[i].x == 100) {
+        if ( pipe[i].x == 110) {
             pipe.push({
                 x: cvs.width,
                 y: Math.floor(Math.random() * pipeTop.height) - pipeTop.height
@@ -152,7 +151,7 @@ function draw(){
         }
 
         // Increase score
-        if ( pipe[i].x == 5) {
+        if ( pipe[i].x == birdX) {
             scoreSound.play();
             score++;
             displayScore.innerHTML = score;
@@ -220,4 +219,10 @@ document.getElementById("playAgain").addEventListener("click", ()=>{
 // Exit game to main menu
 document.getElementById("exit").addEventListener("click", ()=>{
     location.reload();
+})
+
+// Info
+const credits = document.getElementById("credits");
+document.getElementById("info").addEventListener("click", ()=>{
+    credits.classList.toggle("showBox");
 })
