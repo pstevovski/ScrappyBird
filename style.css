@@ -4,20 +4,23 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #20a9e9;
+    background-color: #0097e6;
     font-family: "Montserrat Black";
 }
 h1{
-    color: #333;
-    font-size: 35px;
+    color: #f2f2f2;
+    font-size: 65px;
+    margin-bottom: 5px;
+    margin-top: -15px;
     letter-spacing: 1px;
     text-align: center;
+    font-family: "Paytone One";
 }
-.menu{
-    margin: 0 auto;
-    width: 250px;
-    min-height: 100px;
+.link{
     text-align: center;
+    background-color: #333;
+    width: 60px;
+    margin: 0 auto;
 }
 button{
     width: 100px;
@@ -33,6 +36,7 @@ button{
     outline: none;
 }
 #startGame{
+    background-color: #fff;
     margin: 30px 0 -10px 0;
 }
 #startGame:hover{
@@ -59,25 +63,56 @@ button{
     box-shadow: 3px 3px rgba(0,0,0,0.35)
 }
 .container{
-    display:none;
+    display:block;
     justify-content: center;
     align-items: center;
 
     width: 288px;
     position: relative;
-    margin: 0 auto;
+    margin: 0px auto 0 auto;
 }
 canvas{
-    margin-top: -70px;
-    box-shadow: 10px 10px rgba(0,0,0,0.25);
+    box-shadow: 10px 10px rgba(0,0,0,0.15);
+}
+.deviceInfo{
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+.pc, .mobile{
+    font-size: 25px;
+    color: #f2f2f2;
+    text-shadow: 3px 3px rgba(0,0,0,0.55);
+    width: 220px;
+    animation: deviceInfo 0.8s ease forwards infinite;
+    text-transform: uppercase;
+}
+@keyframes deviceInfo{
+    0%{
+        transform: scale(1)
+    }
+    50%{
+        transform: scale(1.05)
+    }
+    100%{
+        transform: scale(1)
+    }
+}
+.mobile{
+    display: none;
 }
 #score{
     position: absolute;
-    left: 5px;
-    bottom: 5px;
-    font-size: 18px;
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+    font-size: 75px;
     letter-spacing: 1px;
-    color: #333;
+    color: #f2f2f2;
+    text-shadow: 3px 3px rgba(0,0,0,0.35);
+    font-family: "Montserrat Black";
 }
 .gameOver{
     display: none;
@@ -91,17 +126,60 @@ canvas{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9;
-    box-shadow: 5px 5px rgba(0,0,0,0.55);
+    box-shadow: 8px 7px rgba(0,0,0,0.55);
 }
 .gameOver h2{
     text-align: center;
+    color: #20a9e9;
 }
 .gameOver p {
     text-align: left;
+    color: #20a9e9;
+    font-size: 20px;
+    font-family: "Paytone One";
 }
 .gameOver button{
-    background-color: #333;
-    color: #f2f2f2;
+    background-color: #eee;
+    color: #333;
     width: 110px;
     text-align: center;
+    font-family: "Montserrat Regular";
+    box-shadow: 3px 3px rgba(0,0,0,0.25);
+}
+.gameOver button:hover{
+    background-color: #20a9e9;
+    color: #f2f2f2;
+}
+.gameOver.active{
+    animation: popup 0.2s ease-in-out forwards;
+}
+@keyframes popup{
+    0%{
+        transform: translate(-50%, -50%)scale(0);
+    }
+    100%{
+        transform: translate(-50%, -50%)scale(1);
+    }
+}
+
+@media (min-width: 900px){
+    .pc{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media (max-width: 900px){
+    h1{
+        font-size: 35px;
+        margin: 10px 0;
+    }
+    .pc{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
 }
