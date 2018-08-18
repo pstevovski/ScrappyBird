@@ -1,2 +1,2 @@
-# ScrappyBirds - remake of the popular Flappy Birds
-Re-made Flappy Birds for learning purposes only.
+# ScrappyBirds
+Remake of the famous Flappy Bird - for learning purposes only.
