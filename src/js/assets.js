@@ -36,10 +36,29 @@ class Gfx {
             this.pipeBottom.src = "images/pipeBottomNight.png";
 
             // Change score color
-            ui.displayScore.style.color = "#f2f2f2";
+            ui.scoreDisplay.style.color = "#f2f2f2";
 
             // Change body color
             document.querySelector("body").style.backgroundColor = "#2f3640";
+        }
+    }
+
+    // Change bird's image based on direction in which it is going (up/down)
+    changeBirdImage(direction) {
+        if(direction === "UP") {
+            this.bird.src = "images/birdUp.png";
+        } else if (direction === "DOWN") {
+            this.bird.src = "images/birdDown.png";
+        }
+    }
+
+    checkTimeOfDay() {
+        // Change graphical assets according to time of day
+        const time = new Date().getHours();
+        if(time >= 7 && time < 20) {
+            gfx.changeGraphics("day");
+        } else if (time >= 20 || time < 7) {
+            gfx.changeGraphics("night");
         }
     }
 }
@@ -61,3 +80,5 @@ class Sfx {
 
 export const gfx = new Gfx();
 export const sfx = new Sfx();
+
+document.addEventListener("DOMContentLoaded", gfx.checkTimeOfDay.bind(gfx));
