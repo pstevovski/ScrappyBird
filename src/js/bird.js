@@ -13,21 +13,24 @@ class Bird {
     jump(e) {
         e = e || event;
         if(player.playing) {
-            // Check if SPACE is pressed AND if player has started the game
-            if(e.keyCode === 32) {
-                this.y -= 20;
+            // Check if SPACE is pressed OR screen was touched (mobile)
+            if(e.keyCode === 32 || player.screenTouched) {
+                // Reset sound
+                sfx.flySound.currentTime = 0;
+
+                // Move the bird
+                this.y -= 40;
                 this.d = "UP";
+
+                // Mark the game as running
                 player.gameRunning = true;
+
+                // Play flying sound (flap)
                 sfx.flySound.play();
+
+                // Change bird image
+                gfx.changeBirdImage("UP");
             }
-
-            // If user tapped the screen
-            this.y -= 20;
-            this.d = "UP";
-            player.gameRunning = true;
-            sfx.flySound.play();
-
-            gfx.changeBirdImage("UP");
         }
 
         // If player has NOT pressed SPACE / tapped on screen
@@ -50,5 +53,11 @@ document.addEventListener("keydown", bird.jump.bind(bird));
 document.addEventListener("keyup", bird.birdIdle.bind(bird));
 
 // Add touch event listeners (for tablets / mobile)
-document.addEventListener("touchstart", bird.jump.bind(bird));
-document.addEventListener("touchend", bird.birdIdle.bind(bird));
+document.addEventListener("touchstart", ()=>{
+    player.screenTouched = true;
+    bird.jump();
+})
+document.addEventListener("touchend", ()=>{
+    player.screenTouched = false;
+    bird.birdIdle();
+})
