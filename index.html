@@ -5,12 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Scrappy Bird</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/fonts.css">
 </head>
 <body>
     <!-- Title -->
-    <h1>ScrappyBird</h1>
+    <div id="mainMenu">
+        <img src="images/deadBird.png" alt="Dead bird" width="32px" height="32px">
+        <h1>Scrappy Bird</h1>
+
+        <!-- START GAME -->
+        <button class="btns" id="initGame">Start Game</button>
+
+        <!-- ABOUT -->
+        <button class="btns" id="about">About</button>
+        <div id="about_container">
+            <h2>CREDITS</h2>
+            <p>Remake of Flappy Bird game as a learning project.</p>
+            <div>Sun icon: <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a></div>
+            <div>Clouds icon & Stars icon: <a href="http://www.freepik.com" title="Freepik">Freepik</a></div>
+            <div>Moon icon: <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a></div>
+            <div class="licensed">from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+            <span id="closeAbout">X</span>
+        </div>
+
+        <!-- Github Link -->
+        <div class="link">
+            <a href="https://github.com/pecko95/ScrappyBird/" target="_blank"><img src="images/github.png" title="GitHub repository" alt="GitHub" width="32px" height="32px"></a>
+        </div>
+    </div>
+
     <div class="container">
         <!-- INFO HOW TO START -->
         <div class="deviceInfo">
@@ -21,7 +45,10 @@
               Touch screen to start !
             </div>
         </div>
+
+        <!-- PLAYER SCORE -->
         <div id="score"></div>
+
         <!-- Canvas -->
         <canvas id="canvas" width="288" height="512"></canvas>
     </div>
@@ -31,28 +58,11 @@
         <h2>GAME OVER !!</h2>
         <p>Score: <span id="showScore"></span></p>
         <p>Highscore: <span id="showHighscore"></span></p>
-        <button id="playAgain">Play Again ?</button>
-        <button id="exit">Exit</button>
-        <!-- Github Link -->
-        <div class="link">
-            <a href="https://github.com/pecko95/ScrappyBird/" target="_blank"><img src="images/github.png" alt="GitHub" width="25px"></a>
-        </div>
+        <button class="btns" id="playAgain">Play Again ?</button>
+        <button class="btns" id="exit">Exit</button>
     </div>
 
-    <!-- Credits -->
-    <div class="credits_container">
-        <i id="info" class="material-icons">info</i>
-        <div id="credits" class="credit_box">
-            <h2>CREDITS</h2>
-            <div>Sun icon: <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a></div>
-            <div>Clouds icon & Stars icon: <a href="http://www.freepik.com" title="Freepik">Freepik</a> 
-            <div>Moon icon: <a href="https://www.flaticon.com/authors/vectors-market" title="Vectors Market">Vectors Market</a></div>
-            <div class="licensed"></div>
-            from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-            </div>
-        </div>
-    </div>
-<!-- Script link -->
-<script src="main.js"></script>
+    <!-- Script link -->
+    <script type="module" src="src/js/main.js"></script>
 </body>
 </html>

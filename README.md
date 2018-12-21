@@ -1,2 +1,2 @@
-# ScrappyBirds
-Remake of the famous Flappy Bird - for learning purposes only.
+#### Scrappy Birds - a Flappy Birds remake
+###### HTML / SCSS / JS
