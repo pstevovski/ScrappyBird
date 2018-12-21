@@ -8,8 +8,6 @@ class Gfx {
         this.bird = new Image();
         this.pipeTop = new Image();
         this.pipeBottom = new Image();
-
-        this.bird.src = "images/bird.png";
     }
 
     // Change graphics according to time of day

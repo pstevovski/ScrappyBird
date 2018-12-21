@@ -1,5 +1,6 @@
 import { player } from "./player.js";
 import { gfx, sfx } from "./assets.js";
+import { world } from "./world.js";
 
 class Bird {
     constructor() {
@@ -14,19 +15,24 @@ class Bird {
         if(player.playing) {
             // Check if SPACE is pressed AND if player has started the game
             if(e.keyCode === 32) {
-                this.y -= 40;
+                this.y -= 20;
                 this.d = "UP";
                 player.gameRunning = true;
                 sfx.flySound.play();
             }
 
             // If user tapped the screen
-            this.y -= 40;
+            this.y -= 20;
             this.d = "UP";
             player.gameRunning = true;
             sfx.flySound.play();
 
             gfx.changeBirdImage("UP");
+        }
+
+        // If player has NOT pressed SPACE / tapped on screen
+        if(player.gameRunning) {
+            world.deviceInfo();
         }
     }
 
