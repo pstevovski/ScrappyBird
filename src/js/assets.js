@@ -35,9 +35,6 @@ class Gfx {
 
             // Change score color
             ui.scoreDisplay.style.color = "#f2f2f2";
-
-            // Change body color
-            document.querySelector("body").style.backgroundColor = "#2f3640";
         }
     }
 
@@ -69,6 +66,8 @@ class Sfx {
         this.dieSound = new Audio();
         this.hitSound = new Audio();
 
+        this.flySound.volume = 0.3;
+
         this.scoreSound.src = "sounds/point.ogg";
         this.flySound.src = "sounds/wing.ogg";
         this.dieSound.src = "sounds/die.ogg";
@@ -79,4 +78,5 @@ class Sfx {
 export const gfx = new Gfx();
 export const sfx = new Sfx();
 
+// Display different canvas graphics according to time of day
 document.addEventListener("DOMContentLoaded", gfx.checkTimeOfDay.bind(gfx));

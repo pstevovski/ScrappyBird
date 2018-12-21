@@ -4,8 +4,10 @@ import { bird } from "./bird.js";;
 import { world } from "./world.js";
 import { ui } from "./ui.js";
 
-
 function startGame() {
+    // Hide the main menu and display canvas
+    ui.hideMenu();
+
     // Init the game
     world.init();
 
@@ -42,16 +44,6 @@ function draw() {
                 sfx.scoreSound.play();
                 ui.scoreDisplay.textContent = player.score;
             }
-
-            // Detect collision between bird-pipes & bird-ground
-            if( bird.x + gfx.bird.width >= world.pipes[i].x && bird.x <= world.pipes[i].x + gfx.pipeTop.width && (bird.y <= world.pipes[i].y + gfx.pipeTop.height || bird.y + gfx.bird.height >= world.pipes[i].y + world.constant) || bird.y + gfx.bird.height >= world.cvs.height - gfx.ground.height) {
-                    // Play hit sound
-                    sfx.hitSound.play();
-
-                    // End the game
-                    world.endGame();
-                    return;
-                }
         }
         // Gravity affects bird Y position
         bird.y += world.gravity;
@@ -63,6 +55,19 @@ function draw() {
     // Draw the bird
     world.ctx.drawImage(gfx.bird, bird.x, bird.y);
 
+    // Detect collision between bird-pipes & bird-ground
+    for(let i = 0; i < world.pipes.length; i++) {
+        if( bird.x + gfx.bird.width >= world.pipes[i].x && bird.x <= world.pipes[i].x + gfx.pipeTop.width && (bird.y <= world.pipes[i].y + gfx.pipeTop.height || bird.y + gfx.bird.height >= world.pipes[i].y + world.constant) || bird.y + gfx.bird.height >= world.cvs.height - gfx.ground.height) {
+            // Play hit sound
+            sfx.hitSound.play();
+
+            // End the game
+            world.endGame();
+            return;
+        }
+    }
+
+    // Draw the canvas @ 60fps
     world.update = requestAnimationFrame(draw);
 }
 
@@ -74,6 +79,3 @@ document.querySelector("#playAgain").addEventListener("click", startGame);
 
 // Exit the game
 document.querySelector("#exit").addEventListener("click", ()=> location.reload());
-
-
-

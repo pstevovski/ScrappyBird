@@ -5,7 +5,7 @@ import { sfx, gfx } from "./assets.js";
 
 class World {
     constructor() {
-        this.gravity = 2.3;
+        this.gravity = 2.5;
         this.gap = 90;
         this.constant = null;
         this.update = null;
@@ -57,7 +57,9 @@ class World {
 
     // End the game
     endGame() {
+        // Stop the animation
         cancelAnimationFrame(this.update);
+        
         // Change bird's image
         gfx.bird.src = "images/deadBird.png";
 
