@@ -1,4 +1,4 @@
-import { player } from "./player.js";
+import { bird } from "./bird.js";
 
 class UI {
     constructor() {
@@ -30,16 +30,16 @@ class UI {
         this.gameOver.classList.add("active");
 
         // Show the high score
-        if(player.score > player.highscore) {
-            player.highscore = localStorage.setItem("scrappyBird-highscore", player.score);
+        if(bird.score > bird.highscore) {
+            bird.highscore = localStorage.setItem("scrappyBird-highscore", bird.score);
         }
-        player.highscore = localStorage.getItem("scrappyBird-highscore");
+        bird.highscore = localStorage.getItem("scrappyBird-highscore");
 
         // Show the final score
-        this.gameOverScore.textContent = player.score;
+        this.gameOverScore.textContent = bird.score;
 
         // Show the highscore
-        this.showHighscore.textContent = player.highscore;
+        this.showHighscore.textContent = bird.highscore;
     }
 
     // Display info menu

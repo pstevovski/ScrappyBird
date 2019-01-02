@@ -1,11 +1,10 @@
 import { ui } from "./ui.js";
-import { player } from "./player.js";
 import { bird } from "./bird.js";
 import { sfx, gfx } from "./assets.js";
 
 class World {
     constructor() {
-        this.gravity = 2.5;
+        this.gravity = 0.25;
         this.gap = 90;
         this.constant = null;
         this.update = null;
@@ -36,17 +35,18 @@ class World {
         }
         this.update = null;
         
-        // Reset player score and status
-        player.score = 0;
-        player.playing = true;
+        // Reset bird score and status
+        bird.score = 0;
+        bird.playing = true;
 
         // Reset bird's status
         bird.x = 20;
         bird.y = 230;
         bird.d = null;
+        bird.velocity = 0;
 
         // Display starting score
-        ui.scoreDisplay.textContent = player.score;
+        ui.scoreDisplay.textContent = bird.score;
     }
 
     // Game status
@@ -69,7 +69,7 @@ class World {
         // Display game over menu
         ui.gameOverMenu();
 
-        player.playing = false;
+        bird.playing = false;
     }
 }
 
