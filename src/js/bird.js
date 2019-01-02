@@ -30,10 +30,10 @@ class Bird {
                 this.d = "UP";
 
                 // Limit the velocity of the bird
-                if(this.velocity <= -6.75) {
-                    this.velocity = -6.75;
+                if(this.velocity <= -4.75) {
+                    this.velocity = -4.75;
                 }
-
+                console.log(this.velocity);
                 // Mark the game as running
                 this.gameRunning = true;
 
