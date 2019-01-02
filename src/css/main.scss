@@ -140,6 +140,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    touch-action: manipulation; // Disable double-tap zoom on touch devices
 
     width: 288px;
     position: relative;

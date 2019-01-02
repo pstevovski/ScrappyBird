@@ -146,6 +146,8 @@ body .btns:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
   width: 288px;
   position: relative;
   margin: 15px auto;
@@ -270,30 +272,5 @@ body .btns:hover {
     -webkit-transform: scale(1);
             transform: scale(1);
   }
-}
-
-/* MATERIAL DESIGN ICONS CSS */
-.material-icons {
-  font-family: 'Press Start 2P';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  -webkit-font-feature-settings: 'liga';
-          font-feature-settings: 'liga';
 }
 /*# sourceMappingURL=main.css.map */
