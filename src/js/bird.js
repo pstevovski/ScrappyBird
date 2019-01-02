@@ -1,4 +1,3 @@
-import { player } from "./player.js";
 import { gfx, sfx } from "./assets.js";
 import { world } from "./world.js";
 
@@ -7,23 +6,36 @@ class Bird {
         this.d = null; // Direction
         this.x = 20;
         this.y = 230;
+        this.velocity = 0;
+        this.birdJump = -5.5;
+        this.score = 0;
+        this.playing = false;
+        this.gameRunning = false;
+        this.screenTouched = false;
+        this.highscore = localStorage.getItem("scrappyBird-highscore");
     }
 
     // Bird jump (on screen touch or on SPACE pressed)
     jump(e) {
         e = e || event;
-        if(player.playing) {
+        if(this.playing) {
             // Check if SPACE is pressed OR screen was touched (mobile)
-            if(e.keyCode === 32 || player.screenTouched) {
+            if(e.keyCode === 32 || this.screenTouched) {
                 // Reset sound
                 sfx.flySound.currentTime = 0;
 
                 // Move the bird
-                this.y -= 40;
+                this.velocity += this.birdJump - world.gravity;
+                this.y += this.velocity;
                 this.d = "UP";
 
+                // Limit the velocity of the bird
+                if(this.velocity <= -6.75) {
+                    this.velocity = -6.75;
+                }
+
                 // Mark the game as running
-                player.gameRunning = true;
+                this.gameRunning = true;
 
                 // Play flying sound (flap)
                 sfx.flySound.play();
@@ -33,8 +45,8 @@ class Bird {
             }
         }
 
-        // If player has NOT pressed SPACE / tapped on screen
-        if(player.gameRunning) {
+        // If this has NOT pressed SPACE / tapped on screen
+        if(this.gameRunning) {
             world.deviceInfo();
         }
     }
@@ -54,10 +66,10 @@ document.addEventListener("keyup", bird.birdIdle.bind(bird));
 
 // Add touch event listeners (for tablets / mobile)
 document.addEventListener("touchstart", ()=>{
-    player.screenTouched = true;
+    bird.screenTouched = true;
     bird.jump();
 })
 document.addEventListener("touchend", ()=>{
-    player.screenTouched = false;
+    bird.screenTouched = false;
     bird.birdIdle();
 })
